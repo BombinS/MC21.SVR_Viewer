@@ -1,0 +1,38 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style x:Key="DataGridRowStyle" TargetType="{x:Type DataGridRow}">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Status}" Value="OK">
+                <Setter Property="Background" Value="#FFA4EABA"/>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Status}" Value="OK_PCR_Exist">
+                <Setter Property="Background" Value="#FFFF0000"/>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Status}" Value="NA">
+                <Setter Property="Background" Value="White"/>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Status}" Value="NA_PCR_Exist">
+                <Setter Property="Background" Value="#FFFFA0D4"/>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Status}" Value="NA_Bag_Report_Exist">
+                <Setter Property="Background" Value="#FFFBDD1B"/>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Status}" Value="KO_PCR_Exist">
+                <Setter Property="Background" Value="#FFFFA0D4"/>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Status}" Value="KO_Bag_Report_Exist">
+                <Setter Property="Background" Value="#FFFBDD1B"/>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Status}" Value="KO">
+                <Setter Property="Background" Value="#FFFF0000"/>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+	<Style x:Key="TextBlockStyle_Center" TargetType="{x:Type TextBlock}">
+		<Setter Property="Margin" Value="2,0"/>
+		<Setter Property="HorizontalAlignment" Value="Center"/>
+	</Style>
+
+</ResourceDictionary>

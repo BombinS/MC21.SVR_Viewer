@@ -1,0 +1,36 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:vm="clr-namespace:mc21.svr_viewer.ViewModel.Dysplay_SVR_Reqs_vs_TPr_Reqs_View_Model"
+                    xmlns:vs="clr-namespace:mc21.svr_viewer.View.View_Selectors">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="SVR_Reqs_vs_TPr_Reqs_Resource/Row_DataTemplates.xaml"></ResourceDictionary>
+    </ResourceDictionary.MergedDictionaries>
+
+    <vs:SVR_Reqs_vs_TPr_Reqs_Row_Selector 
+        x:Key="row_data_template_selector"
+         Full="{StaticResource svr_reqs_vs_tpr_reqs_resource_full}"
+         SVR_miss="{StaticResource svr_reqs_vs_tpr_reqs_resource_svr_miss}"
+         TPr_miss="{StaticResource svr_reqs_vs_tpr_reqs_resource_tpr_miss}">
+    </vs:SVR_Reqs_vs_TPr_Reqs_Row_Selector> 
+    
+    <DataTemplate x:Key="svr_reqs_vs_tpr_reqs">
+        
+        <Grid>
+            
+            <Grid.DataContext>
+                <vm:Dysplay_SVR_Reqs_vs_TPr_Reqs_View_Model></vm:Dysplay_SVR_Reqs_vs_TPr_Reqs_View_Model>
+            </Grid.DataContext>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            <ListBox ItemsSource="{Binding Display_By_Cases}" ItemTemplateSelector="{StaticResource row_data_template_selector}" HorizontalContentAlignment="Stretch" />
+
+        </Grid>
+        
+    </DataTemplate>
+    
+</ResourceDictionary>

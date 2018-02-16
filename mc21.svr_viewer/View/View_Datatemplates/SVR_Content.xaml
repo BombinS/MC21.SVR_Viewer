@@ -1,0 +1,87 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:vm ="clr-namespace:mc21.svr_viewer.ViewModel.Dysplay_SVR_View_Model">
+
+     <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="SVR_Content_Resources/CheckBox.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="SVR_Content_Resources/Control_Buttons.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="SVR_Content_Resources/Results.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="SVR_Content_Resources/CheckBoxStyle.xaml"></ResourceDictionary>
+    </ResourceDictionary.MergedDictionaries>
+
+    <DataTemplate x:Key="svr_content">
+        <Grid>
+            <Grid.DataContext>
+                <vm:Dysplay_SVR_View_Model></vm:Dysplay_SVR_View_Model>
+            </Grid.DataContext>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+            
+        <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+            
+            <!--регион (строка под меню) для чекбоксов-->
+            <Border Grid.Row="0" Grid.Column="0" Style="{DynamicResource Border_CheckBox_Style}">
+                <ListBox ItemsSource="{Binding Query_Dysplay_Checkboxes_Results}" ItemTemplate="{DynamicResource CheckBox_Row_Dt}" Style="{DynamicResource ListBox_CheckBox_Style}"/>
+            </Border>
+            <Border Grid.Row="0" Grid.Column="1" Style="{DynamicResource Border_CheckBox_Style}">
+                <ListBox ItemsSource="{Binding Query_Dysplay_Checkboxes_Positions}" ItemTemplate="{DynamicResource CheckBox_Row_Dt}" Style="{DynamicResource ListBox_CheckBox_Style}"/>
+             </Border>
+            <Border Grid.Row="0" Grid.Column="2" Style="{DynamicResource Border_CheckBox_Style}">
+                <ListBox ItemsSource="{Binding Query_Dysplay_Checkboxes_Software_Label}" ItemTemplate="{DynamicResource CheckBox_Row_Dt}" Style="{DynamicResource ListBox_CheckBox_Style}"/>
+            </Border>
+            <Border Grid.Row="0" Grid.Column="3" Style="{DynamicResource Border_CheckBox_Style}" Margin="3,3,3,0">
+                <ListBox  ItemsSource="{Binding Query_Dysplay_Checkboxes_PCR}" ItemTemplate="{DynamicResource CheckBox_Row_Dt}" Style="{DynamicResource ListBox_CheckBox_Style}"/>
+            </Border>
+
+                <!-- Регион информации и управления-->
+                <Grid Grid.Row="1" Grid.ColumnSpan="4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    
+                <!--регион отображения результатов выполнения верификационных примеров-->
+                <Border BorderBrush="Black" BorderThickness="1" Style="{DynamicResource Border_CheckBox_Style}" Margin="3" Padding="3">
+                    <DataGrid ItemsSource="{Binding Query_Display_Results}" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" RowStyle="{DynamicResource DataGridRowStyle}" MaxHeight="500" VerticalAlignment="Top" HorizontalAlignment="Left" AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Date}" Header="Дата"/>
+                        <DataGridTextColumn Binding="{Binding Side}" Header="Сторона" ElementStyle="{DynamicResource TextBlockStyle_Center}"/>
+                        <DataGridTextColumn Binding="{Binding ID}" Header="Идентификатор"/>
+                        <DataGridTextColumn Binding="{Binding Result}" Header="Результат" ElementStyle="{DynamicResource TextBlockStyle_Center}"/>
+                        <DataGridTextColumn Binding="{Binding PCR}" Header="Обоснование"  MinWidth="230"/>
+                    </DataGrid.Columns>
+                    </DataGrid>
+                </Border>
+                    
+                <!--регион отображения статистики и управления-->
+                <Border BorderBrush="Black" BorderThickness="1" Grid.Column="1" Style="{DynamicResource Border_CheckBox_Style}" Padding="3" Margin="3">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Button Grid.Row="0" Content="{Binding Button_Content_Show_Critical_Results}" HorizontalContentAlignment="Left" Padding="5,1,1,1" ContentTemplate="{DynamicResource button_template_wrap_text_empty}"/>
+                        <Button Grid.Row="1" Content="{Binding Button_Content_Copy_Procedures_to_Clipboard}" Command="{Binding Copy_Procedures_to_Clipboard_Command}" HorizontalContentAlignment="Left" Padding="5,1,1,1" ContentTemplate="{DynamicResource button_template_wrap_text_empty}" />
+                        <Button Grid.Row="2" Content="{Binding Button_Content_Copy_Cases_to_Clipboard}" Command="{Binding Copy_Cases_to_Clipboard_Command}" HorizontalContentAlignment="Left" Padding="5,1,1,1" ContentTemplate="{DynamicResource button_template_wrap_text_empty}" />
+                        <Button Grid.Row="3" Content="{Binding Button_Content_Create_Failed_Procedures_Table}" Command="{Binding Create_Failed_Procedures_Table_Command}" HorizontalContentAlignment="Left" Padding="5,1,1,1" ContentTemplate="{DynamicResource button_template_wrap_text_empty}" />
+                        <Button Grid.Row="4" Content="{Binding Button_Content_Create_CRM_Table}" Command="{Binding Create_Crm_Table_Command}" HorizontalContentAlignment="Left" Padding="5,1,1,1" ContentTemplate="{DynamicResource button_template_wrap_text_empty}" />
+                    </Grid>
+                </Border>
+            </Grid>
+            
+        </Grid>            
+    </DataTemplate>
+    
+</ResourceDictionary>

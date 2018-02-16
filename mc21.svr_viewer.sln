@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mc21.svr_viewer", "mc21.svr_viewer\mc21.svr_viewer.csproj", "{7A6B65A1-5739-4C34-A083-123AC56A2C55}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mc21.tdd_svr_viewer", "mc21.tdd_svr_viewer\mc21.tdd_svr_viewer.csproj", "{A2E0C7C5-FDCF-49A8-92C6-29BD02BC20A1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7A6B65A1-5739-4C34-A083-123AC56A2C55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A6B65A1-5739-4C34-A083-123AC56A2C55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A6B65A1-5739-4C34-A083-123AC56A2C55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A6B65A1-5739-4C34-A083-123AC56A2C55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2E0C7C5-FDCF-49A8-92C6-29BD02BC20A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2E0C7C5-FDCF-49A8-92C6-29BD02BC20A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2E0C7C5-FDCF-49A8-92C6-29BD02BC20A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2E0C7C5-FDCF-49A8-92C6-29BD02BC20A1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

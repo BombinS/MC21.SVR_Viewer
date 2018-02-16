@@ -1,0 +1,10 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <DataTemplate x:Key="button_template_wrap_text_empty">
+        <Grid>
+            <TextBlock Text="{TemplateBinding Content}" TextWrapping="Wrap" Margin="2"/>
+        </Grid>
+    </DataTemplate>
+
+</ResourceDictionary>

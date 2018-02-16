@@ -1,0 +1,78 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style x:Key="svr_requirements_style" TargetType="{x:Type TextBlock}">
+    	<Style.Triggers>
+    		<DataTrigger Binding="{Binding State}" Value="Unique">
+    			<Setter Property="Foreground" Value="Red"/>
+    		</DataTrigger>
+    	</Style.Triggers>
+    </Style>
+
+    <Style x:Key="tpr_requirements_style" TargetType="{x:Type TextBlock}">
+    	<Style.Triggers>
+    		<DataTrigger Binding="{Binding State}" Value="Unique">
+    			<Setter Property="Foreground" Value="Blue"/>
+    		</DataTrigger>
+    	</Style.Triggers>
+    </Style>
+
+    <DataTemplate x:Key="svr_requirements_template">
+    	<Grid>
+    		<TextBlock TextWrapping="Wrap" Text="{Binding Requirement_ID}" Style="{DynamicResource svr_requirements_style}"/>
+    	</Grid>
+    </DataTemplate>
+
+    <DataTemplate x:Key="tpr_requirements_template">
+    	<Grid>
+    		<TextBlock TextWrapping="Wrap" Text="{Binding Requirement_ID}" Style="{DynamicResource tpr_requirements_style}"/>
+    	</Grid>
+    </DataTemplate>
+
+    <DataTemplate x:Key="svr_reqs_vs_tpr_reqs_resource_full">
+        <Grid>
+            <Border BorderBrush="Black" BorderThickness="1,0,1,1" Padding="1">
+            	<Grid>
+            		<Grid.ColumnDefinitions>
+            			<ColumnDefinition Width="auto"/>
+            			<ColumnDefinition Width="auto"/>
+            			<ColumnDefinition Width="*"/>
+            		</Grid.ColumnDefinitions>
+                    <TextBlock Text="{Binding Case_Id}" Margin="5,0,10,0"/>
+            		<ListBox Grid.Column="1" ItemsSource="{Binding SVR_Case_Requirements}" ItemTemplate="{DynamicResource svr_requirements_template}" BorderThickness="0" Margin="0,0,10,0"/>
+                    <ListBox Grid.Column="2" ItemsSource="{Binding TPr_Case_Requirements}" ItemTemplate="{DynamicResource tpr_requirements_template}" BorderThickness="0"/>
+            	</Grid>
+            </Border>
+        </Grid>
+    </DataTemplate>
+
+    <DataTemplate x:Key="svr_reqs_vs_tpr_reqs_resource_svr_miss">
+        <Grid>
+            <Border BorderBrush="Black" BorderThickness="1,0,1,1" Padding="1" Background="#FFFF7777">
+        		<Grid>
+        			<Grid.ColumnDefinitions>
+        				<ColumnDefinition Width="auto"/>
+        				<ColumnDefinition Width="*"/>
+        			</Grid.ColumnDefinitions>
+        			<TextBlock Margin="10,0" Text="{Binding Case_Id}"></TextBlock>
+        			<TextBlock Grid.Column="1" TextWrapping="Wrap" Text="Отсутсвует в документе SVR"></TextBlock>
+        		</Grid>
+        	</Border>
+        </Grid>
+    </DataTemplate>
+
+    <DataTemplate x:Key="svr_reqs_vs_tpr_reqs_resource_tpr_miss">
+        <Grid>
+            <Border BorderBrush="Black" BorderThickness="1,0,1,1" Padding="1" Background="#FF76C1FF">
+        		<Grid>
+        			<Grid.ColumnDefinitions>
+        				<ColumnDefinition Width="auto"/>
+        				<ColumnDefinition Width="*"/>
+        			</Grid.ColumnDefinitions>
+        			<TextBlock Margin="10,0" Text="{Binding Case_Id}"></TextBlock>
+        			<TextBlock Grid.Column="1" TextWrapping="Wrap" Text="Отсутсвует в тестовых процедурах"></TextBlock>
+        		</Grid>
+        	</Border>
+        </Grid>    </DataTemplate>
+
+</ResourceDictionary>

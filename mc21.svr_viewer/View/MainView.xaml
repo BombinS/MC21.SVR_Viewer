@@ -1,0 +1,51 @@
+﻿<Window x:Class="mc21.svr_viewer.View.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vs="clr-namespace:mc21.svr_viewer.View.View_Selectors"
+        Title="MainView" Height="auto" Width="auto">
+    
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="View_Datatemplates/Empty_Content.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="View_Datatemplates/SVR_Content.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="View_Datatemplates/SVR_Reqs_vs_TPr_Reqs.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    
+    <Grid>
+        <Grid.Resources>
+            <vs:Main_View_Selector 
+                x:Key="main_view_selector" 
+                empty_content="{StaticResource empty_content}" 
+                svr_content="{StaticResource svr_content}" 
+                svr_reqs_vs_tpr_reqs="{StaticResource svr_reqs_vs_tpr_reqs}">
+            </vs:Main_View_Selector>
+        </Grid.Resources>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <!--верхнее меню-->
+        <Menu Grid.Row="0" BorderThickness="1" BorderBrush="Black">
+            <MenuItem Header="Данные">
+                <MenuItem Header="Загрузить SVR" Command="{Binding Load_SVR_Command}"/>
+                <MenuItem Header="Загрузить тестовые процедуры" Command="{Binding Load_Testing_Procedures}"/>
+            </MenuItem>
+            <MenuItem Header="Вид">
+                <MenuItem Header="Отобразить SVR" Command="{Binding Dysplay_SVR_Content_Command}"/>
+                <MenuItem Header="Отобразить затрассированные требования" Command="{Binding Dysplay_SVR_Reqs_vs_TPr_Reqs_Command}"/>
+            </MenuItem>
+        </Menu>
+
+        <!--главное окно отображения-->
+        <ContentControl Grid.Row="1" Content="{Binding Type_Of_View}" ContentTemplateSelector="{StaticResource main_view_selector}"/>
+
+    </Grid>
+</Window>
